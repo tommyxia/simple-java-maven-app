@@ -21,12 +21,7 @@ pipeline {
     stage('deliver') {
       steps {
         sh './jenkins/scripts/deliver.sh'
-        input 'f\'d\'f\'d'
-      }
-    }
-    stage('input') {
-      steps {
-        input 'fdfd'
+        input 'deliver Done'
       }
     }
   }
