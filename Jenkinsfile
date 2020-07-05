@@ -4,24 +4,22 @@ pipeline {
       image 'maven:3-alpine'
       args '-v /root/.m2:/root/.m2'
     }
-
   }
   stages {
-    stage('Build') {
+    stage('Checkout') {
       steps {
-        git 'https://github.com/LUFFY-lucy/simple-java-maven-app'
-        sh 'mvn -B -DskipTests clean package'
+        git 'https://github.com/tommyxia/ssiwo-ruoyi.git'
       }
     }
-    stage('test') {
+    stage('Compile') {
       steps {
-        sh 'mvn test'
+        sh 'mvn compile'
       }
     }
-    stage('deliver') {
+    stage('Start') {
       steps {
-        sh './jenkins/scripts/deliver.sh'
-        input 'deliver Done'
+        sh './ry.sh start'
+        input 'start ruoyi'
       }
     }
   }
